@@ -5,7 +5,7 @@ import 'package:gorgeous_quiz/src/presentation/qna/widgets/question_widget.dart'
 import 'package:gorgeous_quiz/src/presentation/qna/widgets/score_bar.dart';
 
 class QuizPage extends StatelessWidget {
-  const QuizPage({super.key});
+  const QuizPage({super.key,});
 
   @override
   Widget build(BuildContext context) {

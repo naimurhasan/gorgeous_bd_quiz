@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:gorgeous_quiz/src/core/utils/constants.dart';
 import 'package:gorgeous_quiz/src/di_module.dart';
 import 'package:gorgeous_quiz/src/domain/quiz_repository.dart';
+import 'package:gorgeous_quiz/src/presentation/qna/cubit/qna_cubit.dart';
 import 'package:gorgeous_quiz/src/presentation/splash/cubit/splash_cubit.dart';
 
 class SplashPage extends StatelessWidget {
@@ -25,6 +26,7 @@ class SplashPageBody extends StatelessWidget {
     return BlocConsumer<SplashCubit, SplashState>(
       listener: (BuildContext context, SplashState state) {
         if (state is Loaded) {
+          context.read<QuizCubit>().setQuestions(state.questions);
           context.pushReplacementNamed(Routes.menu);
         }
       },

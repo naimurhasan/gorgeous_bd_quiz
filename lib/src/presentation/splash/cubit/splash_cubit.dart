@@ -17,7 +17,6 @@ class SplashCubit extends Cubit<SplashState> {
 
     try {
       final questions = await _quizRepository.getQuizzes();
-      print("LOADER GOT QUESTIONS: $questions");
       emit(SplashState.loaded(questions: questions));
     } catch (e) {
       emit(SplashState.error("Failed to load data: $e"));
