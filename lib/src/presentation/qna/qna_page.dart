@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gorgeous_quiz/src/core/utils/constants.dart';
+import 'package:gorgeous_quiz/src/presentation/qna/widgets/branding_bar.dart';
 import 'package:gorgeous_quiz/src/presentation/qna/widgets/question_widget.dart';
 import 'package:gorgeous_quiz/src/presentation/qna/widgets/score_bar.dart';
 
@@ -15,6 +16,7 @@ class QuizPage extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).viewPadding.top,
           ),
+          const BrandingBar(),
           const ScoreBar(),
           // page body
           Expanded(

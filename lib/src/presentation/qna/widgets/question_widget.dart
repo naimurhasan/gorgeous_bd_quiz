@@ -15,8 +15,14 @@ class QuestionWidget extends StatelessWidget {
           // thumbnail
           ClipRRect(
             borderRadius: BorderRadius.circular(AppSizes.borderRadius),
-            child:
-                CachedNetworkImage(imageUrl: "https://picsum.photos/536/354"),
+            child: SizedBox(
+              width: double.infinity,
+              height: 190,
+              child: CachedNetworkImage(
+                imageUrl: "https://picsum.photos/536/354",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           const SizedBox(height: AppSizes.padding * 2),
           // question

@@ -24,3 +24,7 @@ class AppSizes {
   static const double padding = 8.0;
   static const double borderRadius = 16.0;
 }
+
+class AppAssets{
+ static const String logo = 'assets/images/gorgeous_quiz.png';
+}

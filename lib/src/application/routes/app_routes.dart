@@ -9,7 +9,7 @@ import 'package:gorgeous_quiz/src/presentation/splash/splash_page.dart';
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final GoRouter _router = GoRouter(
-    initialLocation: "/quiz",
+    initialLocation: "/",
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [
