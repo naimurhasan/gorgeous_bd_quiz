@@ -31,5 +31,19 @@ class QuizState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [score, answeredQuestions, questions];
+  List<Object?> get props => [score, answeredQuestions, questions, currentIndex, isFinished,];
+
+  OptionTheme getOptionTheme(String e) {
+    if (answeredQuestions.length > currentIndex) {
+      if (e == questions[currentIndex].correctAnswer) {
+        return OptionTheme.correct;
+      } else if (e == answeredQuestions[currentIndex]) {
+        return OptionTheme.incorrect;
+      } else {
+        return OptionTheme.neutral;
+      }     
+    } else {
+      return OptionTheme.neutral;
+    }
+  }
 }
