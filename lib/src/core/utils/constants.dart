@@ -12,12 +12,12 @@ class AppConstants {
   static const String description = 'A gorgeous quiz app';
   static const String author = 'Naimur Hasan';
   static const String authorEmail = 'naimurhasanrwd@gmail.com';
+  static const String baseUrl = 'https://herosapp.nyc3.digitaloceanspaces.com/';
 }
 
-class AppColors{
-    static const Color background = Color(0xFF0e3e20);
-    static const Color white = Color(0xFFFFFFFF);
-
+class AppColors {
+  static const Color background = Color(0xFF0e3e20);
+  static const Color white = Color(0xFFFFFFFF);
 }
 
 class AppSizes {
@@ -25,6 +25,6 @@ class AppSizes {
   static const double borderRadius = 16.0;
 }
 
-class AppAssets{
- static const String logo = 'assets/images/gorgeous_quiz.png';
+class AppAssets {
+  static const String logo = 'assets/images/gorgeous_quiz.png';
 }
