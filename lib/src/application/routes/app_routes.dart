@@ -3,12 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:gorgeous_quiz/src/core/utils/constants.dart';
 import 'package:gorgeous_quiz/src/presentation/menu/menu_page.dart';
 import 'package:gorgeous_quiz/src/presentation/not_found/not_found_page.dart';
+import 'package:gorgeous_quiz/src/presentation/qna/qna_page.dart';
 import 'package:gorgeous_quiz/src/presentation/splash/splash_page.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final GoRouter _router = GoRouter(
-    initialLocation: "/",
+    initialLocation: "/quiz",
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -24,6 +25,13 @@ class AppRouter {
         name: Routes.menu,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: MenuPage(),
+        ),
+      ),
+      GoRoute(
+        path: "/quiz",
+        name: Routes.quiz,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: QuizPage(),
         ),
       ),
     ],
