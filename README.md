@@ -1,16 +1,14 @@
 # gorgeous_quiz
 
-A new Flutter project.
+A Quiz Assignment Provided By Gorgeous BD Ltd.
 
-## Getting Started
+![ss](screenshot.png)
 
-This project is a starting point for a Flutter application.
+### feature
+- fetch questions in splash from api
+- randomizes options
+- persistent highscore
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### architecture and state
+- clean
+- bloc & freezed
