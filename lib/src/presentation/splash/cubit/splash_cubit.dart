@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gorgeous_quiz/src/core/utils/constants.dart';
 import 'package:gorgeous_quiz/src/data/model/question_model.dart';
+import 'package:gorgeous_quiz/src/di_module.dart';
 import 'package:gorgeous_quiz/src/domain/quiz_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 part 'splash_state.dart';
@@ -17,7 +20,8 @@ class SplashCubit extends Cubit<SplashState> {
 
     try {
       final questions = await _quizRepository.getQuizzes();
-      emit(SplashState.loaded(questions: questions));
+      int highScore = di<SharedPreferences>().getInt(AppStrings.highScore) ?? 0;
+      emit(SplashState.loaded(questions: questions, highScore: highScore));
     } catch (e) {
       emit(SplashState.error("Failed to load data: $e"));
     }

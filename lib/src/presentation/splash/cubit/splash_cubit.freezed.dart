@@ -20,7 +20,7 @@ mixin _$SplashState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Question> questions) loaded,
+    required TResult Function(List<Question> questions, int highScore) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$SplashState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Question> questions)? loaded,
+    TResult? Function(List<Question> questions, int highScore)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$SplashState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Question> questions)? loaded,
+    TResult Function(List<Question> questions, int highScore)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Question> questions) loaded,
+    required TResult Function(List<Question> questions, int highScore) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Question> questions)? loaded,
+    TResult? Function(List<Question> questions, int highScore)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Question> questions)? loaded,
+    TResult Function(List<Question> questions, int highScore)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Question> questions) loaded,
+    required TResult Function(List<Question> questions, int highScore) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Question> questions)? loaded,
+    TResult? Function(List<Question> questions, int highScore)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Question> questions)? loaded,
+    TResult Function(List<Question> questions, int highScore)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Question> questions});
+  $Res call({List<Question> questions, int highScore});
 }
 
 /// @nodoc
@@ -335,12 +335,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? questions = null,
+    Object? highScore = null,
   }) {
     return _then(_$LoadedImpl(
       questions: null == questions
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<Question>,
+      highScore: null == highScore
+          ? _value.highScore
+          : highScore // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -348,7 +353,8 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl({required final List<Question> questions})
+  const _$LoadedImpl(
+      {required final List<Question> questions, required this.highScore})
       : _questions = questions;
 
   final List<Question> _questions;
@@ -360,8 +366,11 @@ class _$LoadedImpl implements Loaded {
   }
 
   @override
+  final int highScore;
+
+  @override
   String toString() {
-    return 'SplashState.loaded(questions: $questions)';
+    return 'SplashState.loaded(questions: $questions, highScore: $highScore)';
   }
 
   @override
@@ -370,12 +379,14 @@ class _$LoadedImpl implements Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             const DeepCollectionEquality()
-                .equals(other._questions, _questions));
+                .equals(other._questions, _questions) &&
+            (identical(other.highScore, highScore) ||
+                other.highScore == highScore));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_questions));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_questions), highScore);
 
   @JsonKey(ignore: true)
   @override
@@ -388,10 +399,10 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Question> questions) loaded,
+    required TResult Function(List<Question> questions, int highScore) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(questions);
+    return loaded(questions, highScore);
   }
 
   @override
@@ -399,10 +410,10 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Question> questions)? loaded,
+    TResult? Function(List<Question> questions, int highScore)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(questions);
+    return loaded?.call(questions, highScore);
   }
 
   @override
@@ -410,12 +421,12 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Question> questions)? loaded,
+    TResult Function(List<Question> questions, int highScore)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(questions);
+      return loaded(questions, highScore);
     }
     return orElse();
   }
@@ -459,10 +470,12 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements SplashState {
-  const factory Loaded({required final List<Question> questions}) =
-      _$LoadedImpl;
+  const factory Loaded(
+      {required final List<Question> questions,
+      required final int highScore}) = _$LoadedImpl;
 
   List<Question> get questions;
+  int get highScore;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -534,7 +547,7 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Question> questions) loaded,
+    required TResult Function(List<Question> questions, int highScore) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -545,7 +558,7 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Question> questions)? loaded,
+    TResult? Function(List<Question> questions, int highScore)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -556,7 +569,7 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Question> questions)? loaded,
+    TResult Function(List<Question> questions, int highScore)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

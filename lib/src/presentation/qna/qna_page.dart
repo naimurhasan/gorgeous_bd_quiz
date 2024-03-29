@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gorgeous_quiz/src/core/utils/constants.dart';
+import 'package:gorgeous_quiz/src/presentation/menu/cubit/highscore_cubit.dart';
 import 'package:gorgeous_quiz/src/presentation/qna/cubit/qna_cubit.dart';
 import 'package:gorgeous_quiz/src/presentation/qna/widgets/branding_bar.dart';
 import 'package:gorgeous_quiz/src/presentation/qna/widgets/question_widget.dart';
@@ -15,6 +16,7 @@ class QuizPage extends StatelessWidget {
     return BlocConsumer<QuizCubit, QuizState>(
       listener: (context, state) {
         if (state.isFinished) {
+          context.read<HighScoreCubit>().setHighScore(state.score);
           context.pop();
         }
       },

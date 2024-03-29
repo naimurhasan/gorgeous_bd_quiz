@@ -28,3 +28,9 @@ class AppSizes {
 class AppAssets {
   static const String logo = 'assets/images/gorgeous_quiz.png';
 }
+
+
+class AppStrings{
+  static const String highScore = 'highScore';
+
+}
