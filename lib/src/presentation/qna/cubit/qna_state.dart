@@ -6,6 +6,11 @@ class QuizState extends Equatable {
   final List<Question> questions;
   final int currentIndex;
   final bool isFinished;
+  // state change trigger is used to 
+  // force state change notify
+  // cause nested options shuffling 
+  // cant be detect by quizstate equatable
+  final int stateChangeTrigger;
 
   const QuizState({
     this.score = 0,
@@ -13,6 +18,7 @@ class QuizState extends Equatable {
     this.questions = const [],
     this.currentIndex = 0,
     this.isFinished = false,
+    this.stateChangeTrigger = 0,
   });
 
   QuizState copyWith({
@@ -27,11 +33,19 @@ class QuizState extends Equatable {
       questions: questions,
       currentIndex: currentIndex ?? this.currentIndex,
       isFinished: isFinished ?? this.isFinished,
+      stateChangeTrigger: stateChangeTrigger + 1,
     );
   }
 
   @override
-  List<Object?> get props => [score, answeredQuestions, questions, currentIndex, isFinished,];
+  List<Object?> get props => [
+        score,
+        answeredQuestions,
+        questions,
+        currentIndex,
+        isFinished,
+        stateChangeTrigger,
+      ];
 
   OptionTheme getOptionTheme(String e) {
     if (answeredQuestions.length > currentIndex) {
@@ -41,7 +55,7 @@ class QuizState extends Equatable {
         return OptionTheme.incorrect;
       } else {
         return OptionTheme.neutral;
-      }     
+      }
     } else {
       return OptionTheme.neutral;
     }

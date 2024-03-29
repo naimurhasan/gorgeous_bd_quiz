@@ -13,7 +13,7 @@ class QuestionWidget extends StatelessWidget {
     final state = context.watch<QuizCubit>().state;
 
     if (state.questions.isEmpty) {
-      return const Center(child: const Text("Quiz is empty"));
+      return const Center(child: Text("Quiz is empty"));
     }
 
     final question = state.questions[state.currentIndex];
